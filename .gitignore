@@ -1,0 +1,20 @@
+# macOS metadata
+.DS_Store
+
+# Rendered and temporary outputs
+tmp/pdfs/render/
+tmp/official_examples/render/
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Common FPGA tool outputs
+*.bit
+*.bin
+*.sof
+*.pof
+*.jed
+*.mcs
+*.log
+*.jou
