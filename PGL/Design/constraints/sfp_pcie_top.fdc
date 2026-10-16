@@ -1,0 +1,232 @@
+# ===========================================================================
+# sfp_pcie_top.fdc --- SFP (千兆以太网 / RGMII2 -> YT8521SH-CA) 输入 + PCIe DMA 顶层约束
+#
+# 派生自 constraints/hdmi_fmc_pcie_video_merged.fdc (该工程已成功 device map 与布线)。
+# 相对基线的**全部差异**如下 (其余约束逐字保留):
+#   删除 : create_clock {fmc_pclk} [get_ports {fmc_la_p17}]   (HDMI 输入像素时钟)
+#   删除 : 21 根 fmc_la_* 端口的 PAP_IO_* 属性 (旧顶层已无这些端口)
+#   新增 : create_clock {rgmii_rxc} [get_ports {rgmii_rxc}] -period 8.000
+#   新增 : set_clock_groups group_4 (rgmii_rxc) 与 group_5 (sys_clk)
+#   新增 : RGMII2 / SFP2 / MDIO / PHY 复位的 PAP_IO_* 属性 (13 组)
+#
+# 引脚来源与争议 (见 docs/top_integration.md §4):
+#   主力证据 = 厂商例程 fpga_demo_100h/ethernet_test/ethernet_test/ethernet_test.fdc
+#   (该工程在同一块 RK3568_MES2L50H_100H 板上已成功 device map + 布线 + 出码流)。
+#   硬件手册《RK3568_MES2L50H_100H》§2.1.7 把 RGMII2_RXCLK 写作 D19, 而 D19 在基线
+#   fdc 里是 fmc_la_n18, 两者冲突; 厂商 fdc 用的是 J19。本文件取 J19 (厂商 + 已布线
+#   证据), **首次综合前必须用实物/原理图复核**。若最终确认为 D19, 只需改本文件里
+#   {p:rgmii_rxc} 的 PAP_IO_LOC 一处。
+#
+# 未在本文件中体现的项:
+#   - MDIO 未做逻辑 (e_mdc 常量 1, e_mdio 三态释放), 但引脚仍按厂商 fdc 约束到位,
+#     便于后续加 MDIO 时无需改约束。
+#   - SFP1 (HSST 直连: HSSTTX2P/N_QR3 = D5/C5, HSSTRX2P/N_QR3 = D11/C11,
+#     参考时钟 F6/E6, SFP1_TX_DISABLE = L16, SFP1_SCL = U21, SFP1_SDA = T20)
+#     **本方案不使用**, 故全部不约束 (D11/C11/F6/E6 等引脚在本顶层里没有端口)。
+#     这不影响 PCIe: PCIe 用的是 HSSTLP_364_918 U0/U1, 与 SFP1 的 D5/C5/D11/C11
+#     本就不同站点 (t1 §2 已论证)。
+# ===========================================================================
+
+
+###==== BEGIN Clocks
+# PCIe clock constraints - critical for timing closure
+create_clock -name {sys_clk} [get_ports {sys_clk}] -period {40.000} -waveform {0.000 20.000}
+create_clock -name {pclk} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.pclk}] -period {4.000} -waveform {0.000 2.000}
+create_clock -name {pclk_div2} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.pclk_div2}] -period {8.000} -waveform {0.000 4.000}
+create_clock -name {ref_clk} [get_pins {u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY/P_REFCK2CORE_0}] -period {10.000} -waveform {0.000 5.000}
+create_clock -name {rgmii_rxc} [get_ports {rgmii_rxc}] -period {8.000} -waveform {0.000 4.000}
+###   rgmii_rxc 是 SFP2/YT8521SH-CA 经 RGMII2 送入的接收时钟 (125 MHz, 8 ns)。
+###   它同时作为 rgmii_interface 内 GTP_CLKBUFG 的输入, 全局网 rgmii_clk 与之同源,
+###   故整条 SFP 接收/解码链 (eth_pkt_rx/pkt_parse/frame_ctrl/tile_buf/tile_decoder/
+###   sd_stream/video_out) 都在这一个时钟域内, 无跨域。
+###==== END "create_clock"
+###==== BEGIN "create_generated_clock"
+###==== END "create_generated_clock"
+###==== BEGIN "set_clock_latency"
+###==== END "set_clock_latency"
+###==== BEGIN "set_clock_uncertainty"
+###==== END "set_clock_uncertainty"
+###==== BEGIN "set_clock_groups"
+set_clock_groups -name group_1 -asynchronous -group [get_clocks {pclk}]
+set_clock_groups -name group_2 -asynchronous -group [get_clocks {pclk_div2}]
+set_clock_groups -name group_3 -asynchronous -group [get_clocks {ref_clk}]
+set_clock_groups -name group_4 -asynchronous -group [get_clocks {rgmii_rxc}]
+set_clock_groups -name group_5 -asynchronous -group [get_clocks {sys_clk}]
+###==== END "set_clock_groups"
+###==== BEGIN "set_input_delay"
+###==== END "set_input_delay"
+
+###==== BEGIN "set_output_delay"
+###==== END "set_output_delay"
+
+###==== BEGIN "set_max_delay"
+###==== END "set_max_delay"
+
+###==== BEGIN "set_min_delay"
+###==== END "set_min_delay"
+
+###==== BEGIN "set_multicycle_path"
+###==== END "set_multicycle_path"
+
+###==== BEGIN "set_false_path"
+###==== END "set_false_path"
+
+###==== BEGIN Attributes - (Populated from tab in SCOPE, do not edit)
+
+# ---- SFP2 / RGMII2 (YT8521SH-CA) : 引脚逐条取自厂商 ethernet_test.fdc ----
+# 电平: 全部 PAP_IO_VCCIO 1.8 + LVCMOS18 (与厂商 fdc 一致; 厂商把 sys_clk 写成 1.5,
+# 本工程沿基线用 3.3/LVCMOS33, 见文件末尾的 sys_clk 段)
+define_attribute {p:rgmii_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_txd[3]} {PAP_IO_LOC} {K21}
+define_attribute {p:rgmii_txd[3]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_txd[3]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_txd[3]} {PAP_IO_DRIVE} {12}
+define_attribute {p:rgmii_txd[3]} {PAP_IO_SLEW} {SLOW}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_LOC} {K22}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_DRIVE} {12}
+define_attribute {p:rgmii_txd[2]} {PAP_IO_SLEW} {SLOW}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_LOC} {M21}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_DRIVE} {12}
+define_attribute {p:rgmii_txd[1]} {PAP_IO_SLEW} {SLOW}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_LOC} {L21}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_DRIVE} {12}
+define_attribute {p:rgmii_txd[0]} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:rgmii_rxd[3]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rxd[3]} {PAP_IO_LOC} {G20}
+define_attribute {p:rgmii_rxd[3]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rxd[3]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_rxd[2]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rxd[2]} {PAP_IO_LOC} {H20}
+define_attribute {p:rgmii_rxd[2]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rxd[2]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_rxd[1]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rxd[1]} {PAP_IO_LOC} {H22}
+define_attribute {p:rgmii_rxd[1]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rxd[1]} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_rxd[0]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rxd[0]} {PAP_IO_LOC} {J22}
+define_attribute {p:rgmii_rxd[0]} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rxd[0]} {PAP_IO_STANDARD} {LVCMOS18}
+
+define_attribute {p:rgmii_txc} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_txc} {PAP_IO_LOC} {J20}
+define_attribute {p:rgmii_txc} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_txc} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_txc} {PAP_IO_DRIVE} {8}
+define_attribute {p:rgmii_txc} {PAP_IO_SLEW} {FAST}
+
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_LOC} {J21}
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_DRIVE} {8}
+define_attribute {p:rgmii_tx_ctl} {PAP_IO_SLEW} {SLOW}
+
+# RGMII2_RXCLK : 厂商 fdc = J19 (已布线) / 硬件手册 = D19 (与旧 fmc_la_n18 冲突)
+# 本工程取 J19; 若实物复核为 D19, 只改下面这一行。
+define_attribute {p:rgmii_rxc} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rxc} {PAP_IO_LOC} {J19}
+define_attribute {p:rgmii_rxc} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rxc} {PAP_IO_STANDARD} {LVCMOS18}
+
+define_attribute {p:rgmii_rx_ctl} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rgmii_rx_ctl} {PAP_IO_LOC} {H19}
+define_attribute {p:rgmii_rx_ctl} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:rgmii_rx_ctl} {PAP_IO_STANDARD} {LVCMOS18}
+
+define_attribute {p:phy_rst_n} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:phy_rst_n} {PAP_IO_LOC} {H15}
+define_attribute {p:phy_rst_n} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:phy_rst_n} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:phy_rst_n} {PAP_IO_DRIVE} {4}
+define_attribute {p:phy_rst_n} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:sfp_disable} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:sfp_disable} {PAP_IO_LOC} {L15}
+define_attribute {p:sfp_disable} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:sfp_disable} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:sfp_disable} {PAP_IO_DRIVE} {4}
+define_attribute {p:sfp_disable} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:e_mdc} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:e_mdc} {PAP_IO_LOC} {H17}
+define_attribute {p:e_mdc} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:e_mdc} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:e_mdc} {PAP_IO_DRIVE} {8}
+define_attribute {p:e_mdc} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:e_mdio} {PAP_IO_DIRECTION} {INOUT}
+define_attribute {p:e_mdio} {PAP_IO_LOC} {H18}
+define_attribute {p:e_mdio} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:e_mdio} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:e_mdio} {PAP_IO_DRIVE} {8}
+define_attribute {p:e_mdio} {PAP_IO_SLEW} {SLOW}
+
+# 引脚总表 (本顶层, 共 13 组 RGMII/SFP + 基线原有的 PCIe/LED/sys_clk/perst_n/button_rst_n)
+#   rgmii_rxc=J19(*)  rgmii_rx_ctl=H19  rgmii_rxd[3:0]=G20/H20/H22/J22
+#   rgmii_txc=J20    rgmii_tx_ctl=J21  rgmii_txd[3:0]=K21/K22/M21/L21
+#   phy_rst_n=H15    sfp_disable=L15   e_mdc=H17  e_mdio=H18
+#   (*) 手册写 D19, 见文件头说明; 需实物复核
+
+###==== END Attributes
+
+###==== BEGIN Logical
+# define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.PLL0_ENABLE.U_GTP_HSSTLP_PLL0} {PAP_LOC} {HSSTLP_364_918:U0_HSSTLP_PLL}
+# define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.CHANNEL0_ENABLE.U_GTP_HSSTLP_LANE0} {PAP_LOC} {HSSTLP_364_918:U0_HSSTLP_LANE}
+# define_attribute {i:u_ips2l_pcie_wrap.U_IPS2L_PCIE_TOP.U_IPS2L_HSSTLP_PCIE_SOFT_PHY.x2.GTP_HSST_2LANE_TOP.U_GTP_HSSTLP_WRAPPER.CHANNEL1_ENABLE.U_GTP_HSSTLP_LANE1} {PAP_LOC} {HSSTLP_364_918:U1_HSSTLP_LANE}
+###==== END Logical
+
+###==== BEGIN Io Table
+define_attribute {p:button_rst_n} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:button_rst_n} {PAP_IO_LOC} {M15}
+define_attribute {p:button_rst_n} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:button_rst_n} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:button_rst_n} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:ref_led} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:ref_led} {PAP_IO_LOC} {M17}
+define_attribute {p:ref_led} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:ref_led} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:ref_led} {PAP_IO_DRIVE} {4}
+define_attribute {p:ref_led} {PAP_IO_PULLUP} {TRUE}
+define_attribute {p:ref_led} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:pclk_led} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:pclk_led} {PAP_IO_LOC} {J16}
+define_attribute {p:pclk_led} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:pclk_led} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:pclk_led} {PAP_IO_DRIVE} {4}
+define_attribute {p:pclk_led} {PAP_IO_PULLUP} {TRUE}
+define_attribute {p:pclk_led} {PAP_IO_SLEW} {SLOW}
+
+define_attribute {p:perst_n} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:perst_n} {PAP_IO_LOC} {M16}
+define_attribute {p:perst_n} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:perst_n} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:perst_n} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:ref_clk_p} {PAP_IO_LOC} {F6}
+define_attribute {p:ref_clk_n} {PAP_IO_LOC} {E6}
+
+define_attribute {p:sys_clk} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:sys_clk} {PAP_IO_LOC} {V4}
+define_attribute {p:sys_clk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:sys_clk} {PAP_IO_STANDARD} {LVCMOS33}
+
+
+
+
+
+
+
+###==== END Io Table

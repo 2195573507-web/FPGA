@@ -1,0 +1,2 @@
+ifg 48
+arp_req 1

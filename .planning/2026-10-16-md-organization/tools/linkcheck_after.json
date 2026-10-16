@@ -1,0 +1,931 @@
+{
+ "summary": {
+  "generatedAt": "2026-10-16T08:20:55.737Z",
+  "root": "D:/FPGA",
+  "mdCount": 184,
+  "filesWithBroken": 0,
+  "brokenTotal": 0
+ },
+ "results": [
+  {
+   "file": ".planning/2026-09-20-rk3568-windows-setup/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-09-20-rk3568-windows-setup/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-09-20-rk3568-windows-setup/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-09-25-rk-fpga-protocol/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-09-25-rk-fpga-protocol/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-09-25-rk-fpga-protocol/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-12-iic-audit/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-12-iic-audit/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-12-iic-audit/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-15-1080p60-audit/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-15-1080p60-audit/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-15-1080p60-audit/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-doc-reorg/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-doc-reorg/move-manifest.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-doc-reorg/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-doc-reorg/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-doc-reorg/verification.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-md-organization/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-md-organization/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/2026-10-16-md-organization/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/audit_identity.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/audit_rx.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/audit_tx.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/board_validation_PASS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/root_cause_hypothesis.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".planning/pcie_colorbar_20261014/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".scratch/handoff/20261016-120030-456-sfp-rtl-defect-fix.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".scratch/sfp-final/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".scratch/sfp-final/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": ".scratch/sfp-final/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "AGENTS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "Memory.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/ALL_ZERO_DEBUG.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/BLACK_SCREEN_DIAGNOSIS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/CODE_ANALYSIS_REPORT.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/CRU_SETUP_GUIDE.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/FIX_ALL_ZERO_PROBLEM.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_BLACK_SCREEN_COMPLETE_GUIDE.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_DEBUG_ACTION_PLAN.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_FMC_CODE_REVIEW.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_FMC_PCIe_RK3568_DIAGNOSIS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_NO_EDID_SOLUTION.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/HDMI_PCIe_DIAGNOSTIC.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/I2C_CLOCK_DIAGNOSIS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/I2C_CLOCK_PROBLEM_SOLUTION.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/PDS_ADD_FILES.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/README_DESIGN.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/TEST_PATTERN_INTEGRATION_GUIDE.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/VIDEO_TRANSMISSION_GUIDE.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/source/BAR1_FIX_INSTRUCTIONS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/source/README_PCIE_VIDEO.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "PGL/Design/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/README.md",
+   "total": 3,
+   "broken": []
+  },
+  {
+   "file": "RK3568/docs/RK3568_HDMI输出开发文档.md",
+   "total": 1,
+   "broken": []
+  },
+  {
+   "file": "RK3568/docs/RK3568_MIPI屏幕开发文档.md",
+   "total": 1,
+   "broken": []
+  },
+  {
+   "file": "RK3568/docs/RK3568显示开发文档_MIPI屏幕与HDMI输出.md",
+   "total": 2,
+   "broken": []
+  },
+  {
+   "file": "RK3568/docs/architecture.md",
+   "total": 1,
+   "broken": []
+  },
+  {
+   "file": "RK3568/docs/rk_fpga_protocol_v1.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/packages/rknn_four_slow_yolo_only/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/packages/scheme4_student_rk3568_video_package/scheme4_student_rk3568_video/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_colorbar/BUILD_REPORT.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_colorbar/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_colorbar/RESCAN_README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_image_receiver/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_test_packages/上传和运行命令_192.168.2.3.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "RK3568/pcie_test_packages/上传和运行说明.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/P1_ARP_VERDICT.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/P3_THROUGHPUT_VERDICT.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/a91_new.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/a91_old.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/aA_new.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/drain_audit/report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/drain_error_requirements.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/error_gate_review.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/expert_audit/report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/host_audit/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/host_audit/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/host_audit/report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/host_audit/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/pc_protocol_requirements.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_a.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_b.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_c.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_d.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_e.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_f.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_g.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/plan_parts/part_h.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/doc_before_sec11.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t12_review.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_e2e_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_host_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_main_sec_part1.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_main_sec_part2.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pctools_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_e2e.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_host.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_main.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_pctools.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_sfpe2e.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_top.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_pre_verifyplan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_sfpe2e_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_top_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t13_verifyplan_sec.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t18_boundary_note.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t18_o1_append.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t18_preverify_t17.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t18_review.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t20/report/part1.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t20/report/part2.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t20/report/part3.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/t6_closure_sec11.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/review/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/rtlfix/t8_prefix_evidence/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/sec73_new.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/sec73_old.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/sec7_new.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/sec7_old.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t11_fix_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t13_revlog.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t16_review_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t17_final/record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t17_fix_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t21_repair_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t24_review_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t5_final_verification.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/t9_review_record.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/tasks.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/tbuf_p1.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "_tmp/tbuf_p2.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/README.md",
+   "total": 2,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/docs/DISTILLATION_STATUS.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/docs/REAL_DISTILL_PREREQUISITES.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/docs/TEACHER_STUDENT_CONTRACT.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/docs/WSL_UNIAD_ENV.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/findings.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/progress.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "adas_distill/task_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/1080p60_方案审计报告.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/1080p60_视频压缩解压方案.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/FPGA与RK3568任务分工及通信接口设计.md",
+   "total": 4,
+   "broken": []
+  },
+  {
+   "file": "docs/README.md",
+   "total": 93,
+   "broken": []
+  },
+  {
+   "file": "docs/agents/domain.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/agents/issue-tracker.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/agents/triage-labels.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/archive/check_fpga_logic.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/assets/sfp_path_rx_sim/README_sim.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/contest/官方历程能力与赛题三映射.md",
+   "total": 13,
+   "broken": []
+  },
+  {
+   "file": "docs/contest/赛题三三人分工与完成顺序.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/contest/赛题三快速上手开发手册.md",
+   "total": 2,
+   "broken": []
+  },
+  {
+   "file": "docs/dec_throughput_options.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/design_audit.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/e2e_test_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/encoder_parallel.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/eth_pkt_rx_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/eth_rx_verify_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/frame_integration_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/host_side_changes.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/pc_tools_changes.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/pc_tools_review.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/research/notes.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/research/rk3568_pg2l100h_open_source_research.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/research/开源项目链接汇总.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/rtl_fix_code_review.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/sfp_delivery_manifest.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/sfp_e2e_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/sfp_path_design.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/sfp_verify_plan.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/superpowers/specs/2026-10-14-pcie-colorbar-design.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/tile_buf_report.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "docs/top_integration.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "rtl/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "tmp/agent_briefs/task1_rx.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "tmp/agent_briefs/task2_tx.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "tmp/agent_briefs/task3_identity.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "tmp/yolov8_rk3568_four_slow_stage_20260929/rknn_four_slow_demo/README.md",
+   "total": 0,
+   "broken": []
+  },
+  {
+   "file": "videos/README.md",
+   "total": 0,
+   "broken": []
+  }
+ ]
+}

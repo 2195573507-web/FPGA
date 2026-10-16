@@ -1,0 +1,2 @@
+// 厂商 mac_rx.v 的唯一改动行 (REC_FCS 提前退出), 供核对; 完整文件请用厂商原件打此补丁
+// line 142: - else if (mac_rx_cnt == 5'd27)   + else if (mac_rx_cnt == 5'd6)

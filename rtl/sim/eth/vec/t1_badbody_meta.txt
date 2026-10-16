@@ -1,0 +1,5 @@
+ifg 48
+arp_req 0
+t1_total 24016
+t1_sof 20
+crc_fail 1

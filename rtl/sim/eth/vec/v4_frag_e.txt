@@ -1,0 +1,6 @@
+0 0 0 len_bad 0 ulen=1488 ip_tot=1508 hdr=20
+1 0 0 frag 0 MF/offset=0x20b9
+2 0 0 frag 0 MF/offset=0x00b9
+3 1456 1 valid 0 L=1510 pay=1456
+4 0 0 frag 0 MF/offset=0x000a
+5 1456 1 valid 0 L=1510 pay=1456

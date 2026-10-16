@@ -18,3 +18,68 @@ tmp/official_examples/render/
 *.mcs
 *.log
 *.jou
+
+# Local RK3568 cross-build products
+RK3568/pcie_image_receiver/pango_rgb565_receiver
+
+# ---------------------------------------------------------------------------
+# Vendor material and large local archives: not source, never committed
+# ---------------------------------------------------------------------------
+/资料/
+/videos/
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.img
+*.onnx
+*.mp4
+*.safetensors
+
+# Local scratch / download areas
+/tmp/
+/_tmp/
+*.pds.lock
+
+# Root-level Python virtualenv (pyvenv.cfg + bin/lib/lib64/include/install)
+/pyvenv.cfg
+/bin/
+/lib/
+/lib64/
+/include/
+/install/
+
+# Icarus Verilog / simulator compiled testbenches and bytecode caches
+*.vvp
+__pycache__/
+*.py[cod]
+
+# Pango (PDS) run outputs: builds, netlists, place-route, timing reports
+PGL/Design/build_*/
+PGL/Design/compile/
+PGL/Design/constraint_check/
+PGL/Design/deps/
+PGL/Design/device_map/
+PGL/Design/generate_bitstream/
+PGL/Design/generate_netlist/
+PGL/Design/ipcore/
+PGL/Design/log/
+PGL/Design/logbackup/
+PGL/Design/output/
+PGL/Design/place_route/
+PGL/Design/reference_only/
+PGL/Design/report_power/
+PGL/Design/report_timing/
+PGL/Design/synthesize/
+pcie_dma_test_100h/compile/
+pcie_dma_test_100h/constraint_check/
+pcie_dma_test_100h/generate_bitstream/
+pcie_dma_test_100h/device_map/
+pcie_dma_test_100h/ipcore/
+pcie_dma_test_100h/log/
+pcie_dma_test_100h/logbackup/
+pcie_dma_test_100h/place_route/
+pcie_dma_test_100h/report_timing/
+pcie_dma_test_100h/synthesize/

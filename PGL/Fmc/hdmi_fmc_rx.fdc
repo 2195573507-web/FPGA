@@ -1,0 +1,113 @@
+# ATK FMC_HDMI_4K30 input card on RK3568 FMC LPC.
+# P/N suffixes are independent CMOS signals on this card, not LVDS pairs.
+
+create_clock -name {sys_clk} [get_ports {sys_clk}] -period {40.000} -waveform {0.000 20.000}
+create_clock -name {fmc_pclk} [get_ports {fmc_la_p17}] -period {3.367} -waveform {0.000 1.6835}
+
+define_attribute {p:sys_clk} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:sys_clk} {PAP_IO_LOC} {V4}
+define_attribute {p:sys_clk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:sys_clk} {PAP_IO_STANDARD} {LVCMOS33}
+
+# Signal-to-FPGA mapping from the RK3568 hardware manual.
+define_attribute {p:fmc_la_p17} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p17} {PAP_IO_LOC} {C18}
+define_attribute {p:fmc_la_p17} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p17} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n17} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n17} {PAP_IO_LOC} {C19}
+define_attribute {p:fmc_la_n17} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n17} {PAP_IO_STANDARD} {LVCMOS33}
+
+define_attribute {p:fmc_la_p18} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p18} {PAP_IO_LOC} {E19}
+define_attribute {p:fmc_la_p18} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p18} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n18} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n18} {PAP_IO_LOC} {D19}
+define_attribute {p:fmc_la_n18} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n18} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n19} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n19} {PAP_IO_LOC} {G13}
+define_attribute {p:fmc_la_n19} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n19} {PAP_IO_STANDARD} {LVCMOS33}
+
+define_attribute {p:fmc_la_p21} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p21} {PAP_IO_LOC} {B21}
+define_attribute {p:fmc_la_p21} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p21} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n21} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n21} {PAP_IO_LOC} {A21}
+define_attribute {p:fmc_la_n21} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n21} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p22} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p22} {PAP_IO_LOC} {F15}
+define_attribute {p:fmc_la_p22} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p22} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n22} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:fmc_la_n22} {PAP_IO_LOC} {F21}
+define_attribute {p:fmc_la_n22} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n22} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n22} {PAP_IO_DRIVE} {4}
+define_attribute {p:fmc_la_n22} {PAP_IO_SLEW} {FAST}
+
+define_attribute {p:fmc_la_p23} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p23} {PAP_IO_LOC} {E22}
+define_attribute {p:fmc_la_p23} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p23} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n23} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n23} {PAP_IO_LOC} {D22}
+define_attribute {p:fmc_la_n23} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n23} {PAP_IO_STANDARD} {LVCMOS33}
+
+define_attribute {p:fmc_la_p24} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p24} {PAP_IO_LOC} {D21}
+define_attribute {p:fmc_la_p24} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p24} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p25} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p25} {PAP_IO_LOC} {G15}
+define_attribute {p:fmc_la_p25} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p25} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n25} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n25} {PAP_IO_LOC} {G16}
+define_attribute {p:fmc_la_n25} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n25} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p26} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p26} {PAP_IO_LOC} {J14}
+define_attribute {p:fmc_la_p26} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p26} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n26} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n26} {PAP_IO_LOC} {H14}
+define_attribute {p:fmc_la_n26} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n26} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p27} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p27} {PAP_IO_LOC} {G17}
+define_attribute {p:fmc_la_p27} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p27} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n27} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_n27} {PAP_IO_LOC} {G18}
+define_attribute {p:fmc_la_n27} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n27} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p28} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:fmc_la_p28} {PAP_IO_LOC} {J15}
+define_attribute {p:fmc_la_p28} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p28} {PAP_IO_STANDARD} {LVCMOS33}
+
+# LA29_P/N through LA32_P/N are NC on RK3568_MES2L50H/100H. They are left
+# out deliberately; the ATK card uses them for D6/D4/D2/D1/D0/DE/HS/VS.
+
+define_attribute {p:fmc_la_p33} {PAP_IO_DIRECTION} {INOUT}
+define_attribute {p:fmc_la_p33} {PAP_IO_LOC} {G21}
+define_attribute {p:fmc_la_p33} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_p33} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_p33} {PAP_IO_DRIVE} {4}
+define_attribute {p:fmc_la_p33} {PAP_IO_SLEW} {FAST}
+define_attribute {p:fmc_la_n33} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:fmc_la_n33} {PAP_IO_LOC} {G22}
+define_attribute {p:fmc_la_n33} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:fmc_la_n33} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:fmc_la_n33} {PAP_IO_DRIVE} {4}
+define_attribute {p:fmc_la_n33} {PAP_IO_SLEW} {FAST}
+
+# LA24_N is listed as A21, the same location as LA21_N; leave it unplaced
+# until the PCB/FPGA pin table is corrected.

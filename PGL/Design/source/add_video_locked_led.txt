@@ -1,0 +1,23 @@
+# 将这段添加到约束文件 hdmi_fmc_pcie_video_merged.fdc 的末尾
+# 用于指示HDMI信号是否锁定
+
+# video_locked LED - 当HDMI信号锁定时应该亮
+define_attribute {p:video_locked} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:video_locked} {PAP_IO_LOC} {N16}  # 请根据您的板子修改引脚号
+define_attribute {p:video_locked} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:video_locked} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:video_locked} {PAP_IO_DRIVE} {4}
+define_attribute {p:video_locked} {PAP_IO_SLEW} {SLOW}
+
+# video_overflow LED - 当FIFO溢出时应该亮（通常不应该亮）
+define_attribute {p:video_overflow} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:video_overflow} {PAP_IO_LOC} {P16}  # 请根据您的板子修改引脚号
+define_attribute {p:video_overflow} {PAP_IO_VCCIO} {1.8}
+define_attribute {p:video_overflow} {PAP_IO_STANDARD} {LVCMOS18}
+define_attribute {p:video_overflow} {PAP_IO_DRIVE} {4}
+define_attribute {p:video_overflow} {PAP_IO_SLEW} {SLOW}
+
+# 注意：
+# 1. N16 和 P16 是示例引脚号，您需要根据实际板卡原理图修改
+# 2. 添加后需要重新编译和加载比特流
+# 3. 如果 video_locked LED 亮起 = HDMI信号已正确接收

@@ -1,0 +1,17 @@
+mac_rx.v patch log (t5 / t1 risk R1: REC_FCS idle 27 -> 6 cycles)
+======================================================================
+source : D:/FPGA/资料/RK3568_MES2L50H_100H开发板资料/05-开发资料/02-FPGA开发/fpga_demo_100h/ethernet_test/ethernet_test/source/mac_rx.v
+output : D:/FPGA/rtl/vendor_patched/mac_rx.v
+src  md5 : d0b1aed9773991bc6229b235b209db4f
+out  md5 : 7332c9e984e13bd142cfed5ff6dc640c
+changed line : 142 (1-based)
+
+--- before ---
+                else if (mac_rx_cnt == 5'd27)
+--- after  ---
+                else if (mac_rx_cnt == 5'd6)
+
+Rationale: CRC compare happens at mac_rx_cnt==5 (mac_rx.v:301-314);
+  27 cycles is a conservative margin. 6 cycles is 1 after the compare,
+  which allows back-to-back frames at the IEEE minimum IFG=12 cycles.
+  The REC_FCS exit counter only gates re-arming preamble detect.

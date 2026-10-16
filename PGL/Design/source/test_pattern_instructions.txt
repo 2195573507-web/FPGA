@@ -1,0 +1,57 @@
+// 在 hdmi_fmc_pcie_top.v 中添加以下代码来启用测试图案
+
+// ========== 添加测试图案模块实例化 ==========
+// 在模块声明的wire定义部分添加：
+
+wire [23:0] test_pattern_data;
+wire        test_pattern_valid;
+wire        test_pattern_sof;
+
+// 在模块实例化部分添加测试图案生成器：
+
+test_pattern_generator u_test_pattern (
+    .clk         (pclk_div2),
+    .rst_n       (core_rst_n),
+    .pixel_data  (test_pattern_data),
+    .pixel_valid (test_pattern_valid),
+    .frame_start (test_pattern_sof),
+    .pixel_ready (1'b1)
+);
+
+// ========== 临时替换HDMI输入源 ==========
+// 找到hdmi_fmc_pcie_video_bridge模块实例化，将输入改为测试图案：
+
+hdmi_fmc_pcie_video_bridge #(
+    .FIFO_ADDR_WIDTH (10)
+) u_video_bridge (
+    // 像素时钟域输入 - 使用测试图案替代HDMI
+    .pix_clk       (pclk_div2),          // 原来是 hdmi_stream_clk
+    .pix_rst_n     (core_rst_n),         // 原来是相应的复位信号
+    .pix_data      (test_pattern_data),  // 原来是 hdmi_stream_data
+    .pix_valid     (test_pattern_valid), // 原来是 hdmi_stream_valid
+    .pix_sof       (test_pattern_sof),   // 原来是 hdmi_stream_sof
+    .pix_ready     (),                   // 不使用
+
+    // PCIe侧保持不变
+    .pcie_clk      (pclk_div2),
+    .pcie_rst_n    (core_rst_n),
+    .dma_request   (video_dma_request),
+    .dma_active    (video_dma_active),
+    .dma_length_dw (video_dma_length),
+    .max_payload_code (cfg_max_payload_size),
+    .dma_data_valid (video_dma_valid),
+    .dma_data      (video_dma_data),
+    .dma_data_last (video_dma_last),
+    .dma_data_ready (video_dma_ready),
+    .overflow      (hdmi_dma_overflow)
+);
+
+// ========== 编译提示 ==========
+// 1. 将 test_pattern_generator.v 添加到项目
+// 2. 重新编译
+// 3. 加载比特流
+// 4. 在RK3568上运行接收程序
+// 5. 应该能看到彩色条纹（白黄青绿品红红蓝黑）
+
+// ========== 恢复HDMI输入 ==========
+// 测试完成后，将上述修改恢复为原来的HDMI信号源
